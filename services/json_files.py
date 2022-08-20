@@ -8,9 +8,14 @@ class JsonFileSystem:
     def createFolder(self, path: str):
         try:
             os.makedirs(path)
+            return True
         except:
-            pass
+            return False
     
     def createAndSaveFile(self, path: str, data: dict):
         with open(path, "w") as outfile:
             json.dump(data, outfile)
+            
+    def getDataInFile(self, path: str):
+        with open(path, "r") as readfile:
+            return json.load(readfile)
