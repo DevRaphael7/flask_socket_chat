@@ -1,10 +1,6 @@
 from flask import request, Flask, jsonify
 from flask_socketio import SocketIO
-from controllers.conversation__controller import app
-from models.conversation import Conversation
-
-from repositorys.conversation__repository import ConversationRepository
-from repositorys.message__repository import MessageRepository
+from controllers.user__controller import app
 
 socketio = SocketIO(app, cors_allowed_origins =
     ["http://localhost:8100"]
