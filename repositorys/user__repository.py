@@ -25,5 +25,19 @@ class UserRepository:
             return usuario
         except:
             return None
+    
+    def getAllUser(self):
+        usuarios = {}
+        try:
+            loop = True
+            count = 1
+            while(loop):
+                usuario = self.jsonService.getDataInFile('db/' + str(count) + '/user.json')
+                usuarios[count] = usuario
+                count += 1
+        except:
+            print('Recuperou todos os usuários...')
+        
+        return usuarios
             
         

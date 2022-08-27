@@ -13,7 +13,7 @@ def saveUser():
     usuario = Usuario(data["nome"], usuarioRepository.getLastId(), data["avatar"])
     usuarioRepository.save(usuario)
     response = Response()
-    response.setSucessResponse("Usuário criado com sucesso!")
+    response.setSucessResponse("Usuário criado com sucesso!", { "id": usuarioRepository.getLastId() })
     return response.__dict__
 
 @app.route("/user/<id_user>", methods=["GET"])
@@ -27,3 +27,12 @@ def getUser(id_user: int):
     else:
         response.setErrorResponse("Usuário não encontrado!")
         return response.__dict__
+
+@app.route("/users", methods=['GET'])
+def getAllUsers():
+    usuarioRepository = UserRepository()
+    usuarios = usuarioRepository.getAllUser()
+    response = Response()
+    response.setSucessResponse('Usuários encontrados', usuarios)
+    return response.__dict__
+    

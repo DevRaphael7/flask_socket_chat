@@ -1,10 +1,12 @@
 from flask import request, Flask, jsonify
 from flask_socketio import SocketIO
 from controllers.user__controller import app
+from flask_cors import CORS, cross_origin
 
 socketio = SocketIO(app, cors_allowed_origins =
-    ["http://localhost:8100"]
+    ["*"]
 )
+CORS(app)
 
 @socketio.on('conversa')
 def conversationSocket(message_request):
