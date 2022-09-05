@@ -9,7 +9,7 @@ class ContactRepository:
 
     def getContactsByNumero(self):
         try:
-            self.service.getDataInFile('db/' + str(self.numero) + '/contacts/listContacts.json')
+            return self.service.getDataInFile('db/' + str(self.numero) + '/contacts/listContacts.json')
         except Exception:
             print('Erro ao obter lista de contatos')
     

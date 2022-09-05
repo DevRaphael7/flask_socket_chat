@@ -1,11 +1,9 @@
 from flask import request, Flask, jsonify
 from models.response import Response
-from flask_restful import Resource
 from models.usuario import Usuario
 from repositorys.user__repository import UserRepository
 
 app = Flask(__name__)
-
 
 @app.route("/user", methods=["POST"])
 def saveUser():

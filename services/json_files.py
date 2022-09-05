@@ -19,3 +19,7 @@ class JsonFileSystem:
     def getDataInFile(self, path: str):
         with open(path, "r") as readfile:
             return json.load(readfile)
+    
+    def listDirectoryAndFile(self, path: str):
+        listDiretory = os.listdir(path)
+        return listDiretory

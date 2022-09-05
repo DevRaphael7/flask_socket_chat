@@ -8,12 +8,8 @@ class UserRepository:
         self.jsonService = JsonFileSystem()
         
     def getLastId(self):
-        id_user: int = 0
-        while(True):
-            if self.jsonService.createFolder('db/' + str(id_user)): 
-                break
-            id_user += 1
-        return id_user
+        return int(self.jsonService.listDirectoryAndFile('db/')[-1]) + 1
+        
     
     def save(self, usuario: Usuario):
         self.jsonService.createFolder('db/' + str(usuario.id))

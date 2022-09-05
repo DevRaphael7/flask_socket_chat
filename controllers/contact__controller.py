@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route("/contact/<number_user>", methods=["GET"])
 def getAllContactByNumber(number_user: int):
-    data = request.get_json()
     repository = ContactRepository(number_user)
     response = Response()
     if repository.getContactsByNumero():
         response.setSucessResponse('Contatos obtidos com sucesso!', repository.getContactsByNumero())
+        print(repository.getContactsByNumero())
         return response.__dict__
     else:
         response.setSucessResponse('Sem contatos para esse número')
